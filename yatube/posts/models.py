@@ -7,7 +7,8 @@ User = get_user_model()
 class Group(models.Model):
     title = models.TextField()
     slug = models.SlugField()
-    description = models.TextField()
+    description = models.TextField(),
+    beautful_phrase = models.CharField(max_length=200, null=True, blank=True)
 
     def __str__(self) -> str:
         return self.title
@@ -15,7 +16,7 @@ class Group(models.Model):
 
 class Post(models.Model):
     text = models.TextField()
-    pub_date = models.DateField(auto_now_add=True)
+    pub_date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
