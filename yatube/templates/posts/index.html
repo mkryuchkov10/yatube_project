@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>
+    {{ title }}
+</title>
+{% endblock %}
+<main> 
+    {% block content %}
+    {{ description }}
+    {% for post in posts %}
+  <ul>
+    <li>
+      Автор: {{ post.author.get_full_name }}
+    </li>
+    <li>
+      Дата публикации: {{ post.pub_date|date:"d E Y" }}
+    </li>
+  </ul>
+  <p>{{ post.text }}</p>    
+  <a href="">все записи группы</a>
+  {% if not forloop.last %}<hr>{% endif %}
+{% endfor %} 
+    {% endblock %}
+  </main>
+  <!-- Использованы классы бустрапа: -->
+  <!-- border-top: создаёт тонкую линию сверху блока -->
+  <!-- text-center: выравнивает текстовые блоки внутри блока по центру -->
+  <!-- py-3: контент внутри размещается с отступом сверху и снизу --> 
